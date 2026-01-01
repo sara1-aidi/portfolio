@@ -1,0 +1,245 @@
+/* SVGAvatar.module.css */
+.avatarContainer {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  margin: 0 auto;
+}
+
+.avatarSVG {
+  filter: drop-shadow(0 0 15px rgba(101, 163, 13, 0.2));
+  animation: float 8s ease-in-out infinite;
+}
+
+.avatarGroup {
+  transition: transform 0.3s ease;
+}
+
+.avatarGroup:hover {
+  transform: scale(1.01);
+}
+
+.head {
+  filter: url(#glow);
+  animation: gentlePulse 6s ease-in-out infinite;
+}
+
+.hair {
+  filter: drop-shadow(0 2px 4px rgba(92, 64, 51, 0.3));
+}
+
+.eyes {
+  filter: drop-shadow(0 0 3px rgba(138, 154, 91, 0.3));
+}
+
+.eyebrows {
+  filter: drop-shadow(0 1px 2px rgba(92, 64, 51, 0.2));
+}
+
+.freckles {
+  animation: fadeInOut 4s ease-in-out infinite;
+}
+
+.nose {
+  filter: drop-shadow(0 1px 1px rgba(176, 137, 104, 0.2));
+}
+
+.mouth {
+  filter: drop-shadow(0 0 4px rgba(197, 108, 108, 0.2));
+}
+
+.body {
+  filter: drop-shadow(0 4px 8px rgba(93, 83, 74, 0.2));
+}
+
+.shirtDetails {
+  filter: drop-shadow(0 2px 4px rgba(156, 138, 124, 0.2));
+}
+
+.naturePattern {
+  pointer-events: none;
+}
+
+.laptop {
+  filter: drop-shadow(0 4px 8px rgba(139, 115, 85, 0.3));
+}
+
+.screen {
+  filter: drop-shadow(0 0 10px rgba(101, 163, 13, 0.3));
+}
+
+.codeLine {
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 2px rgba(217, 249, 157, 0.3));
+}
+
+.key {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.key:hover {
+  filter: brightness(1.1);
+}
+
+.cursor {
+  animation: leafBlink 1.2s ease-in-out infinite;
+}
+
+.hands {
+  animation: gentleMove 3s ease-in-out infinite;
+}
+
+.floatingElements {
+  pointer-events: none;
+}
+
+.floatingElement {
+  animation: gentleFloat 8s ease-in-out infinite;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.floatingElement:hover {
+  opacity: 0.9;
+}
+
+.connectionLine {
+  animation: vinePulse 3s ease-in-out infinite;
+}
+
+.fallingElements {
+  pointer-events: none;
+}
+
+.natureOverlay {
+  mix-blend-mode: multiply;
+}
+
+.cssGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(101, 163, 13, 0.1) 0%, rgba(101, 163, 13, 0) 70%);
+  border-radius: 50%;
+  z-index: -1;
+  animation: gentleGlow 6s ease-in-out infinite;
+}
+
+.statusIndicator {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: rgba(250, 250, 249, 0.8);
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(168, 162, 158, 0.2);
+}
+
+.statusLight {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #65a30d;
+  animation: gentlePulseLight 3s ease-in-out infinite;
+}
+
+.statusText {
+  color: #57534e;
+  font-size: 11px;
+  font-family: 'Georgia', serif;
+  letter-spacing: 0.5px;
+  text-transform: capitalize;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(2deg);
+  }
+}
+
+@keyframes gentlePulse {
+  0%, 100% {
+    r: 60;
+  }
+  50% {
+    r: 60.5;
+  }
+}
+
+@keyframes gentleGlow {
+  0%, 100% {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translate(-50%, -50%) scale(1.03);
+  }
+}
+
+@keyframes vinePulse {
+  0%, 100% {
+    stroke-opacity: 0.3;
+  }
+  50% {
+    stroke-opacity: 0.6;
+  }
+}
+
+@keyframes leafBlink {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.9);
+  }
+}
+
+@keyframes gentlePulseLight {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(101, 163, 13, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 3px rgba(101, 163, 13, 0);
+  }
+}
+
+@keyframes gentleMove {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(1px);
+  }
+}
+
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}

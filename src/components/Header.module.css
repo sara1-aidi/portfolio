@@ -1,0 +1,730 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  z-index: 1000;
+  background: transparent;
+  pointer-events: none;
+}
+
+/* Clean Timeline Container - Dark theme */
+.timelineContainer {
+  position: absolute;
+  top: 40px;
+  left: 20px;
+  right: 20px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+  pointer-events: auto;
+}
+
+.timelineProgress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: linear-gradient(90deg, #60a5fa, #3b82f6);
+  border-radius: 3px;
+  transition: width 0.1s ease-out;
+}
+
+/* Pinned Icons Container */
+.pinnedIcons {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  pointer-events: auto;
+}
+
+/* Menu and Contact Buttons - Dark theme */
+.menuButton,
+.contactButton {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  background: rgba(30, 41, 59, 0.8);
+  color: #cbd5e1;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.menuButton:hover,
+.contactButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(96, 165, 250, 0.3);
+  color: #60a5fa;
+  border-color: rgba(96, 165, 250, 0.3);
+  background: rgba(30, 41, 59, 0.9);
+}
+
+.menuButton.active,
+.contactButton.active {
+  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 6px 20px rgba(96, 165, 250, 0.4);
+}
+
+/* Menu Drawer - Dark theme */
+.menuDrawer {
+  position: fixed;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: auto;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  z-index: 1001;
+  transition: top 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  pointer-events: auto;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.menuDrawer.open {
+  top: 0;
+}
+
+/* Drawer Header - Dark theme */
+.drawerHeader {
+  padding: 20px;
+  background: rgba(15, 23, 42, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.drawerTimelineContainer {
+  position: relative;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.drawerTimelineProgress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: linear-gradient(90deg, #60a5fa, #3b82f6);
+  border-radius: 3px;
+  transition: width 0.3s ease-out;
+}
+
+.drawerPinnedIcons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.drawerMenuButton,
+.drawerContactButton {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  background: rgba(30, 41, 59, 0.8);
+  color: #cbd5e1;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.drawerMenuButton:hover,
+.drawerContactButton:hover {
+  background: rgba(59, 130, 246, 0.2);
+  color: #60a5fa;
+  border-color: rgba(96, 165, 250, 0.3);
+  transform: translateY(-2px);
+}
+
+.drawerMenuButton.active,
+.drawerContactButton.active {
+  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 4px 15px rgba(96, 165, 250, 0.3);
+}
+
+/* Navigation Icons Grid in Drawer - Dark theme */
+.navIconsGrid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  flex-wrap: wrap;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 50px 20px;
+}
+
+.navIconItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  padding: 15px;
+  transition: all 0.3s ease;
+  border-radius: 16px;
+  min-width: 80px;
+}
+
+.navIconItem:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.navIconItem.active {
+  transform: translateY(-5px);
+}
+
+.iconContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.navIcon {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(30, 41, 59, 0.8);
+  border-radius: 20px;
+  font-size: 2rem;
+  color: #cbd5e1;
+  transition: all 0.3s ease;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.navIconItem:hover .navIcon {
+  background: rgba(59, 130, 246, 0.2);
+  color: #60a5fa;
+  border-color: rgba(96, 165, 250, 0.3);
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(96, 165, 250, 0.2);
+}
+
+.navIconItem.active .navIcon {
+  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+  color: white;
+  box-shadow: 0 10px 30px rgba(96, 165, 250, 0.4);
+  border-color: transparent;
+}
+
+/* HOVER TOOLTIP - Dark theme */
+.hoverTooltip {
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+  color: white;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  white-space: nowrap;
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  z-index: 10;
+  box-shadow: 0 8px 25px rgba(96, 165, 250, 0.4);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  backdrop-filter: blur(10px);
+}
+
+.hoverTooltip.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.hoverTooltip:after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid #3b82f6;
+}
+
+.activeIndicator {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.activeDot {
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(96, 165, 250, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(96, 165, 250, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(96, 165, 250, 0);
+  }
+}
+
+/* Contact Popover - UPDATED with real information */
+.contactPopover {
+  position: fixed;
+  top: 90px;
+  right: 20px;
+  width: 350px;
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  border-radius: 16px;
+  z-index: 1001;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transform: translateY(-10px) scale(0.95);
+  pointer-events: none;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.contactPopover.open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.popoverHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 1.5rem;
+  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+  color: white;
+}
+
+.popoverHeader h4 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.popoverClose {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  font-size: 1.2rem;
+  color: white;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.popoverClose:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(90deg);
+}
+
+/* Contact Links Section */
+.contactLinks {
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sectionTitle {
+  font-size: 1rem;
+  color: #60a5fa;
+  margin: 0 0 1rem 0;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.contactLink {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem;
+  color: #cbd5e1;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  margin-bottom: 0.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.contactLink:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateX(5px);
+  border-color: var(--link-color, rgba(255, 255, 255, 0.1));
+}
+
+.linkIcon {
+  font-size: 1.2rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.contactLink:hover .linkIcon {
+  background: rgba(var(--link-color, 96, 165, 250), 0.1);
+  transform: scale(1.1);
+}
+
+.linkInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.linkLabel {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  margin-bottom: 0.2rem;
+}
+
+.linkValue {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  font-weight: 300;
+}
+
+/* Contact Form Section */
+.contactFormSection {
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contactForm {
+  margin-top: 1rem;
+}
+
+.formGroup {
+  margin-bottom: 1rem;
+}
+
+.formInput,
+.formTextarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  color: #e2e8f0;
+}
+
+.formInput::placeholder,
+.formTextarea::placeholder {
+  color: #94a3b8;
+}
+
+.formInput:focus,
+.formTextarea:focus {
+  outline: none;
+  border-color: #60a5fa;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
+}
+
+.formSubmit {
+  width: 100%;
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.formSubmit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(96, 165, 250, 0.3);
+}
+
+.submitIcon {
+  font-size: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.formSubmit:hover .submitIcon {
+  transform: translateX(5px);
+}
+
+/* Quick Note */
+.quickNote {
+  padding: 1rem 1.5rem;
+  background: rgba(96, 165, 250, 0.05);
+  border-top: 1px solid rgba(96, 165, 250, 0.1);
+}
+
+.quickNote p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #94a3b8;
+  line-height: 1.5;
+  text-align: center;
+  font-weight: 300;
+}
+
+/* Overlay - Dark theme */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  pointer-events: auto;
+  backdrop-filter: blur(3px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .timelineContainer {
+    left: 15px;
+    right: 15px;
+  }
+  
+  .pinnedIcons {
+    left: 15px;
+    right: 15px;
+  }
+  
+  .navIconsGrid {
+    gap: 30px;
+    padding: 40px 15px;
+  }
+  
+  .navIcon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.8rem;
+  }
+  
+  .navIconItem {
+    min-width: 70px;
+    padding: 10px;
+  }
+  
+  .contactPopover {
+    width: calc(100vw - 40px);
+    right: 20px;
+    left: 20px;
+    top: 90px;
+  }
+  
+  .contactLinks,
+  .contactFormSection {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    height: 70px;
+  }
+  
+  .timelineContainer {
+    top: 35px;
+    height: 2px;
+  }
+  
+  .pinnedIcons {
+    top: 15px;
+  }
+  
+  .menuButton,
+  .contactButton {
+    width: 36px;
+    height: 36px;
+    font-size: 1.1rem;
+  }
+  
+  .navIconsGrid {
+    gap: 20px;
+    padding: 30px 10px;
+  }
+  
+  .navIcon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+  
+  .navIconItem {
+    min-width: 60px;
+  }
+  
+  .hoverTooltip {
+    font-size: 12px;
+    padding: 6px 12px;
+    top: -40px;
+  }
+  
+  .drawerHeader {
+    padding: 15px;
+  }
+  
+  .contactPopover {
+    width: calc(100vw - 30px);
+    right: 15px;
+    left: 15px;
+    top: 80px;
+  }
+  
+  .contactLink {
+    padding: 0.6rem;
+  }
+  
+  .linkIcon {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+  
+  .linkLabel {
+    font-size: 0.85rem;
+  }
+  
+  .linkValue {
+    font-size: 0.75rem;
+  }
+}
+/* Form Status Messages */
+.formStatus {
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 0.9rem;
+  animation: slideIn 0.3s ease;
+}
+
+.formStatus.success {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.formStatus.error {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.formStatus.info {
+  background: rgba(96, 165, 250, 0.1);
+  color: #60a5fa;
+  border: 1px solid rgba(96, 165, 250, 0.3);
+}
+
+.statusIcon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+/* Spinning animation for submit button */
+.spinning {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Disabled submit button */
+.formSubmit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.formSubmit:disabled:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Add a name field to the form */
+.contactFormSection {
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}

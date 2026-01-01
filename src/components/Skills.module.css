@@ -1,0 +1,384 @@
+/* Skills.module.css - Updated with Dark Theme to match About section */
+
+.skills {
+  padding: 100px 20px;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  position: relative;
+  min-height: 100vh;
+  color: #ffffff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+}
+
+.title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #60a5fa, #3b82f6);
+  border-radius: 2px;
+}
+
+.subtitle {
+  font-size: 1.3rem;
+  color: #cbd5e1;
+  max-width: 600px;
+  margin: 2rem auto 0;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* Navigation Line */
+.navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 60px;
+  position: relative;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.navButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.navIcon {
+  font-size: 1.8rem;
+  color: #475569;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(30, 41, 59, 0.5);
+  border-radius: 50%;
+  border: 2px solid #334155;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.navText {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.navButton:hover .navIcon {
+  color: #60a5fa;
+  border-color: #60a5fa;
+  background: rgba(59, 130, 246, 0.1);
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(96, 165, 250, 0.3);
+}
+
+.navButton:hover .navText {
+  color: #60a5fa;
+}
+
+.navButton.active .navIcon {
+  color: #60a5fa;
+  border-color: #60a5fa;
+  background: rgba(59, 130, 246, 0.15);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+}
+
+.navButton.active .navText {
+  color: #60a5fa;
+  font-weight: 700;
+}
+
+.connector {
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(90deg, #334155, #475569);
+  margin: 0 10px;
+  position: relative;
+}
+
+/* Active connector animation */
+.navItem.active ~ .navItem .connector,
+.navItem:has(.navButton.active) .connector {
+  background: linear-gradient(90deg, #3b82f6, #60a5fa);
+}
+
+/* Skills Display */
+.skillsDisplay {
+  padding: 40px;
+  background: rgba(15, 23, 42, 0.4);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.skillsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.skillCard {
+  position: relative;
+  background: rgba(30, 41, 59, 0.6);
+  border-radius: 16px;
+  padding: 25px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  cursor: pointer;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(5px);
+}
+
+.skillCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #60a5fa, #3b82f6);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.skillCard:hover::before {
+  transform: scaleX(1);
+}
+
+.skillCard:hover {
+  transform: translateY(-8px);
+  background: rgba(30, 41, 59, 0.8);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(96, 165, 250, 0.3);
+  border-color: rgba(96, 165, 250, 0.3);
+}
+
+.skillIcon {
+  font-size: 3rem;
+  color: #60a5fa;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 10px rgba(96, 165, 250, 0.3));
+}
+
+.skillContent {
+  text-align: center;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.skillCard:hover .skillContent {
+  opacity: 1;
+  max-height: 200px;
+}
+
+.skillCard:hover .skillIcon {
+  transform: scale(0.8);
+  margin-bottom: 10px;
+  filter: drop-shadow(0 0 20px rgba(96, 165, 250, 0.5));
+}
+
+.skillName {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 8px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.skillDescription {
+  font-size: 0.9rem;
+  color: #cbd5e1;
+  line-height: 1.5;
+  margin: 0;
+  font-weight: 300;
+}
+
+/* Glow effect for active section */
+.skillsDisplay {
+  position: relative;
+}
+
+.skillsDisplay::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #60a5fa, #3b82f6, #60a5fa);
+  border-radius: 22px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.skillsDisplay:hover::before {
+  opacity: 0.1;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .skillsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+  
+  .connector {
+    width: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .skills {
+    padding: 60px 20px;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+  }
+  
+  .subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .navigation {
+    flex-direction: column;
+    gap: 20px;
+    align-items: stretch;
+  }
+  
+  .navItem {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .connector {
+    width: 2px;
+    height: 40px;
+    margin: 10px 0;
+  }
+  
+  .skillsDisplay {
+    padding: 30px 20px;
+  }
+  
+  .skillsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+  
+  .skillCard {
+    min-height: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 2rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+  }
+  
+  .navIcon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+  
+  .navText {
+    font-size: 0.85rem;
+  }
+  
+  .skillsGrid {
+    grid-template-columns: 1fr;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  .skillCard {
+    min-height: 100px;
+    padding: 20px;
+  }
+  
+  .skillIcon {
+    font-size: 2.5rem;
+  }
+  
+  .skillName {
+    font-size: 1.1rem;
+  }
+  
+  .skillDescription {
+    font-size: 0.85rem;
+  }
+}
+
+/* Dark theme text colors */
+.skills * {
+  color: inherit;
+}
+
+.skills h1,
+.skills h2,
+.skills h3,
+.skills h4,
+.skills p,
+.skills span,
+.skills div {
+  color: #ffffff;
+}
+
+/* Ensure the section has proper dark theme */
+#skills {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
+}
