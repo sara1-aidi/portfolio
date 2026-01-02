@@ -1,7 +1,7 @@
 # Sara Aidi - Portfolio
 
 ## 🚀 Live Portfolio
-[View Live Portfolio](https://your-portfolio.vercel.app) *← Update after deployment*
+[View Live Portfolio][(https://your-portfolio.vercel.app)](https://portfolio-sooty-eta-93.vercel.app/) *← Update after deployment*
 
 ## 📋 About
 Modern, interactive portfolio showcasing my projects across web development, mobile apps, and AI/ML.
